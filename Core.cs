@@ -8,7 +8,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[assembly: MelonInfo(typeof(NoPineappleOnPizzaMod.Core), "NoPineappleOnPizza", "1.0.0", "Scribble", null)]
+[assembly: MelonInfo(typeof(NoPineappleOnPizzaMod.Core), "NoPineappleOnPizza", "1.0.1", "Scribble", null)]
 [assembly: MelonGame("Keepsake Games", "Jump Space")]
 
 namespace NoPineappleOnPizzaMod
@@ -122,10 +122,17 @@ namespace NoPineappleOnPizzaMod
     {
         public static void SwapMesh()
         {
+            string modsDirPath = Path.Combine(MelonEnvironment.ModsDirectory, "Scribble-NoPineappleOnPizza");
+            if (!Directory.Exists(modsDirPath))
+            {
+                modsDirPath = MelonEnvironment.ModsDirectory;
+            }
+
             string bundlePath = Path.Combine(
-                MelonEnvironment.ModsDirectory,
+                modsDirPath,
                 "pizza.bundle"
             );
+
 
             if (!File.Exists(bundlePath))
             {
